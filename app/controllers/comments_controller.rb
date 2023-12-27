@@ -4,8 +4,13 @@ class CommentsController < ApplicationController
   # GET /comments or /comments.json
   def index
     @comments = Comment.all
-    @pagy, @comments = pagy(Comment.order(created_at: :desc),items: 5)
+    @pagy, @comments = pagy(Comment.order(created_at: :desc),items: 45)
 
+    respond_to do |format|
+      format.html # GET요청에 응답
+      format.turbo_stream #POST요청에 응답
+      
+    end
   end
 
   # GET /comments/1 or /comments/1.json
