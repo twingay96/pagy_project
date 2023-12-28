@@ -1,0 +1,6 @@
+scroll pagination기능(javascript, stimulus없이 구현)을 사용할 post생성:
+
+    rails g scaffold posts title image_url
+    rails db:migrate
+  
+rails s 실행하여서 동작하는지 확인후 , faker gem을 이용해서 test용 데이터를 생성:
