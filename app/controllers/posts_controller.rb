@@ -5,6 +5,10 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @pagy, @posts = pagy(Post.order(created_at: :desc),items: 5)
+
+    #binding.b
+    render "scrollable_list" if params[:page]
+    puts "params[:page]:", params[:page]
   end
 
 
