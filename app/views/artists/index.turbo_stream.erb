@@ -1,0 +1,10 @@
+<%= turbo_stream.append :artists do %>
+    <%= render @artists %>
+<% end %>
+<%= turbo_stream.replace :pagination do %>
+    <% if @pagy.next.present? %>
+        <%= turbo_frame_tag :pagination, loading: :lazy, src: artists_path(format: :turbo_stream, page: @pagy.next) %>
+    <% else %>
+    <p>마지막 페이지 입니다.</p>
+    <% end %>
+<% end %>

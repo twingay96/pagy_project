@@ -1,5 +1,11 @@
-<%= turbo_frame_tag "posts-page-#{@pagy.next}", 
-                    loading: :lazy ,
-                    src: pagy_url_for(@pagy, @pagy.next) do %>
-                    <div>Loading...<div>
-                    <% end %>
+<% if @pagy.next.present? %>
+
+    <%= turbo_frame_tag "posts-page-#{@pagy.next}", 
+                        loading: :lazy ,
+                        src: pagy_url_for(@pagy, @pagy.next) do %>
+                        <div>Loading...<div>
+                        <% end %>
+    
+<% else%>
+    <div> 마지막페이지 입니다. </div>
+<% end %>

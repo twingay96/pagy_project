@@ -3,6 +3,9 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
+    if request.path == "/"
+        redirect_to "/posts?page=1"
+    end
     @posts = Post.all
     @pagy, @posts = pagy(Post.order(created_at: :desc),items: 5)
 

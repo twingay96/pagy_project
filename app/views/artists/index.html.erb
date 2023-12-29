@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Artists</h1>
+
+<div id="artists">
+  <% @artists.each do |artist| %>
+    <p> id :<%= artist.id%> </p>
+    <%= render artist %>
+    <p>
+      <%= link_to "Show this artist", artist %>
+    </p>
+  <% end %>
+</div>
+
+<%= turbo_frame_tag :pagination, loading: :lazy , src: artists_path(format: :turbo_stream) %>
+<%# link_to "New artist", new_artist_path %>
