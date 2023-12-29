@@ -79,7 +79,7 @@ pagy_url 헬퍼는 params[:page]파라미터를 사용하여 다음페이지 정
 
 즉, 
 
-![image](https://github.com/twingay96/pagy_project/assets/64403357/34ffb8c8-74c3-4796-840b-1203c1163942)
+![image](https://github.com/twingay96/pagy_project/assets/64403357/a6ded660-a9a4-498f-9e5f-fdb800594274)
 
 
             1. index.html.erb에서 render "posts/next_page"동작  
