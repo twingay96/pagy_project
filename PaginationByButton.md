@@ -130,6 +130,33 @@ append하기전페이지의 다음페이지(방금 추가된페이지)를 가르
 
 마지막 페이지에서 버튼이 사라진것을 확이가능.
 
+그리고 현재 상태에서 rails s 실행후 http://127.0.0.1:3000 를 주소창에 입력하여 방문하여 
+
+![image](https://github.com/twingay96/pagy_project/assets/64403357/f8a692e3-a65d-4c2d-ab63-f5e92c22eb72)
+
+Load more 버튼 클릭시 페이지네이션 기능이 동작하지 않는 것을 확인 할 수 있음. 
+pagy_url 기능은 현재 방문 중인 url을 기준으로 params[:page]를 전달 하는 메소드이기 때문에 
+http://127.0.0.1:3000로 방문한 페이지에서는  pagy_url메소드가 정상동작하지 않음
+
+따라서 index 액션에 다음과 같이 수정:
+
+![image](https://github.com/twingay96/pagy_project/assets/64403357/4346234e-3f3f-4a3a-9778-b73eb619b3bb)
+
+request.path == "/": 이 조건은 현재 요청의 경로가 루트 경로("/")인지를 검사합니다. 
+루트 경로는 웹사이트의 가장 기본이 되는 경로를 말하며, 일반적으로 웹사이트의 홈페이지를 가리킵니다.
+
+Rails 컨트롤러에서 request 객체를 사용하면 다음과 같은 여러 가지 정보를 얻을 수 있습니다:
+
+        request.path: 요청된 경로를 문자열로 반환합니다.
+        request.fullpath: 쿼리 스트링을 포함한 전체 경로를 반환합니다.
+        request.url: 전체 URL을 반환합니다.
+        request.method: 요청 메소드 (예: GET, POST, PUT, DELETE 등)를 반환합니다.
+        request.query_parameters: URL의 쿼리 스트링 파라미터를 담고 있는 해시를 반환합니다.
+        request.request_parameters: POST 요청의 바디를 담고 있는 해시를 반환합니다.
+        request.headers: HTTP 요청 헤더를 담고 있는 객체를 반환합니다.
+        request.remote_ip: 요청을 보낸 클라이언트의 IP 주소를 반환합니다.
+        request.referer 또는 request.referrer: 이전 페이지의 URL을 반환합니다 (HTTP Referer 헤더를 기반으로 함).
+        request 객체는 Rack 미들웨어에 의해 생성되며, Rails 애플리케이션에서는 이 객체를 통해 요청에 대한 상세한 정보를 얻을 수 있습니다. 컨트롤러의 액션 내에서 request 객체를 사용하여 요청을 처리하는 로직을 작성할 때, 이 객체의 메서드와 속성을 활용하게 됩니다.
 
 
 
