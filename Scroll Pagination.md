@@ -103,6 +103,21 @@ _next_page.html.erb를 일단 페이지 끝에 다다르면 content missing 에�
 
 ![image](https://github.com/twingay96/pagy_project/assets/64403357/16097d43-3327-49c5-ae1b-c22c8f0c15eb)
 
+그 후 , 현재 동작 순서를 살펴보면 
+"1. _next_page.html.erb ->2. (pagy_url_for(@pagy, @pagy.next)) -> 3. posts_controller.rb의 index액션"
+인데 3. index 액션에서 @pagy의 정보가 한칸 의 값으로 변경됨. 
+즉, _next_page.html.erb의 turbo_frame_tag "posts-page-#{@pagy.next}"을 풀어서 보면
+
+        "posts-page-2"
+
+였다면 이에 대해 응답하는  turbo_frame_tag도 "posts-page-2"를 가져야함 따라서 응답하는 scrollable_list.html.erb의 turbo_frame_tag 
+는 "posts-page-#{@pagy.next}"가 아닌 "posts-page-#{@pagy.page}"로 , 즉 @pagy의 현재 페이지를 나타내는 @pagy.page로 변경해야함 :
+
+![image](https://github.com/twingay96/pagy_project/assets/64403357/6bed54bd-264b-4226-8ff8-ec072257bd6e)
+
+
+
+
 
 
 
