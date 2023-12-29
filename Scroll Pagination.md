@@ -97,6 +97,14 @@ lazy동작중(로딩중)에 다음과 같이 임의로 출력될 뭔가를 지�
 
 ![image](https://github.com/twingay96/pagy_project/assets/64403357/66abfc61-f5d1-4bbf-af4f-b7e71b6fb180)
 
+해결 :
+
+_next_page.html.erb를 일단 페이지 끝에 다다르면 content missing 에러가 발생하지 않게 끔 수정:
+
+![image](https://github.com/twingay96/pagy_project/assets/64403357/16097d43-3327-49c5-ae1b-c22c8f0c15eb)
+
+
+
 
 
 
